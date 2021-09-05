@@ -27,7 +27,7 @@ class Post :
 
     @staticmethod
 
-    def get_post_by_id(id) -> dict:
+    def get_post_by_id(id: int) -> dict:
 
         especific_post = db.posts.find_one({'_id': id})
 
@@ -107,7 +107,7 @@ class Post :
 
 
     
-    def save(self):
+    def save(self) -> dict:
 
         target_new_id = self.get_new_id() 
 

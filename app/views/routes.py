@@ -35,7 +35,6 @@ def init_app(app: Flask):
 
     def create_post():
 
-
         try: 
 
             treated_data = Post.verify_json_request(**request.json)
