@@ -1,4 +1,4 @@
-class PropMissingError(Exception) :
+class KeyMissingError(Exception) :
 
     def __init__(self, message) -> None:
 
@@ -13,7 +13,7 @@ class ValueTypeError(Exception) :
         self.message = f'Only string type. These props has a different type: {set(message)}'
 
 
-class InvalidProps(Exception) :
+class InvalidKeysError(Exception) :
 
     def __init__(self, message) -> None:
 

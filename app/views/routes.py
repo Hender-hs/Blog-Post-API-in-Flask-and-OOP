@@ -1,6 +1,5 @@
 from flask                          import Flask, jsonify, request
-from app.models.data_model          import DataRequest
-from app.models.exceptions_errors   import PropMissingError, ValueTypeError, InvalidProps
+from app.models                     import DataRequest, DBManipulation, KeyMissingError, ValueTypeError, InvalidKeysError
 
 def init_app(app: Flask):
 
@@ -9,7 +8,7 @@ def init_app(app: Flask):
 
     def read_posts():
   
-        all_posts = DataRequest.get_all_posts()
+        all_posts = DBManipulation.get_all_posts()
 
         json_return = all_posts or {'message': 'there is no any post'}
 
@@ -21,7 +20,7 @@ def init_app(app: Flask):
 
     def get_especific_post_by_id(id: int) -> list:
 
-        especific_post = DataRequest.get_post_by_id(id)
+        especific_post = DBManipulation.get_post_by_id(id)
 
         if not especific_post:
 
@@ -41,11 +40,11 @@ def init_app(app: Flask):
 
             data_obj = DataRequest(**treated_data)
 
-            inserted_data = data_obj.save()
+            inserted_data = DBManipulation.save(data_obj.__dict__)
 
             return inserted_data, 201
         
-        except PropMissingError as error:
+        except KeyMissingError as error:
 
             return error.__dict__, 400
 
@@ -59,7 +58,7 @@ def init_app(app: Flask):
 
     def delete_post_by_id(id: int) -> list:
 
-        deleted_post = DataRequest.delete_a_post(id) 
+        deleted_post = DBManipulation.delete_a_post(id) 
 
         if not deleted_post:
 
@@ -76,7 +75,7 @@ def init_app(app: Flask):
 
         try:
 
-            updated_post = DataRequest.update_a_post(data_to_update=request.json, id=id)
+            updated_post = DBManipulation.update_a_post(data_to_update=request.json, id=id)
 
             if not updated_post:
 
@@ -84,13 +83,10 @@ def init_app(app: Flask):
 
             return jsonify(updated_post), 201
 
-        except InvalidProps as error:
+        except InvalidKeysError as error:
 
             return error.__dict__, 400
 
         except ValueTypeError as error:
 
             return error.__dict__, 400
-
-
-
