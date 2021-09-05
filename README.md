@@ -52,14 +52,16 @@ werkzeug
 
 > `/posts`
 > - You're gonna receive all posts on API. Such as:
-`[
+```
+[
   {
 	  "title": <string>,
 	  "author": <string>,
 	  "tags": <string>,
 	  "content": <string>
   }
-]`
+]
+```
 
 > - If some of these keys are missed or incorrect, you're gonna receive a advice.
 
@@ -68,12 +70,14 @@ werkzeug
 
 > `/posts`
 
-`{
+```
+{
 	"title": <string>,
 	"author": <string>,
 	"tags": <string>,
 	"content": <string>
-}`
+}
+```
 
 > - If some of these keys are missed or incorrect, you're gonna receive a advice.
 
@@ -83,12 +87,14 @@ werkzeug
 
 > In this end-point you'll need to especify the post ID
 
-`{
+```
+{
 	"title": <string>,
 	"author": <string>,
 	"tags": <string>,
 	"content": <string>
-}`
+}
+```
 
 > - If some of these keys are missed or incorrect, you're gonna receive a advice.
 
