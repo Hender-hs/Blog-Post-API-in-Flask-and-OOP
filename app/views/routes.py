@@ -1,5 +1,5 @@
 from flask                          import Flask, jsonify, request
-from app.models.data_model          import Post
+from app.models.data_model          import DataRequest
 from app.models.exceptions_errors   import PropMissingError, ValueTypeError, InvalidProps
 
 def init_app(app: Flask):
@@ -9,7 +9,7 @@ def init_app(app: Flask):
 
     def read_posts():
   
-        all_posts = Post.get_all_posts()
+        all_posts = DataRequest.get_all_posts()
 
         json_return = all_posts or {'message': 'there is no any post'}
 
@@ -21,7 +21,7 @@ def init_app(app: Flask):
 
     def get_especific_post_by_id(id: int) -> list:
 
-        especific_post = Post.get_post_by_id(id)
+        especific_post = DataRequest.get_post_by_id(id)
 
         if not especific_post:
 
@@ -37,9 +37,9 @@ def init_app(app: Flask):
 
         try: 
 
-            treated_data = Post.verify_json_request(**request.json)
+            treated_data = DataRequest.verify_json_request(**request.json)
 
-            data_obj = Post(**treated_data)
+            data_obj = DataRequest(**treated_data)
 
             inserted_data = data_obj.save()
 
@@ -59,7 +59,7 @@ def init_app(app: Flask):
 
     def delete_post_by_id(id: int) -> list:
 
-        deleted_post = Post.delete_a_post(id) 
+        deleted_post = DataRequest.delete_a_post(id) 
 
         if not deleted_post:
 
@@ -76,7 +76,7 @@ def init_app(app: Flask):
 
         try:
 
-            updated_post = Post.update_a_post(data_to_update=request.json, id=id)
+            updated_post = DataRequest.update_a_post(data_to_update=request.json, id=id)
 
             if not updated_post:
 

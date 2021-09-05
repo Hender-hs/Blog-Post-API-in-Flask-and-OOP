@@ -2,7 +2,7 @@ from app                            import db
 from app.models.exceptions_errors   import PropMissingError, ValueTypeError, InvalidProps
 from datetime                       import datetime
 
-class Post :
+class DataRequest :
 
 
     def __init__(self, title: str, author: str, tags: str, content: str) -> None:
