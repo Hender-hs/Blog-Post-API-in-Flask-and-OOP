@@ -1,4 +1,4 @@
-# Blog Post DB in Flask and made with OOP
+# Blog Post DB in Flask and with MongoDB and made with OOP
 > It's a Image data base made in Flask.
 
 
@@ -14,8 +14,8 @@
 
 
 ## General Information
-- A API that was created with Object Oriented Programming and it's able to store blog posts contents.
-- This API was made to easy storing blogs posts!
+- It is a NoSQL API that was created with Object Oriented Programming, Flask, MongoDB and it's able to store blog posts contents.
+- This API was made to easy storing blogs posts using NoSQL database!
 - The mainly reason that it was created was to putt my knoledge and what I've learned with flask and OOP in pratice.
 
 
@@ -23,6 +23,7 @@
 ## Technologies Used
 - Python - version 3
 - Flask - version 2.0
+- NoSQL MongoDB
 - Object Oriented Programming
 
 
